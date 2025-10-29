@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BirthDetailsForm } from "@/components/birth-details-form"
 import { KundaliVisualization } from "@/components/kundali-visualization"
 import { PersonalizedReports } from "@/components/personalized-reports"
@@ -30,7 +30,7 @@ export default function Home() {
   const [viewMode, setViewMode] = useState<ViewMode>("input")
 
   // Load saved Kundalis from localStorage on mount
-  useState(() => {
+  useEffect(() => {
     const saved = localStorage.getItem("savedKundalis")
     if (saved) {
       setSavedKundalis(JSON.parse(saved))

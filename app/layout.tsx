@@ -15,17 +15,26 @@ export const metadata: Metadata = {
   generator: 'v0.app',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
-        {children}
-        <Analytics />
-      </body>
-    </html>
-  )
-}
+import { ThemeProvider } from "@/components/theme-provider"
+ 
+ export default function RootLayout({
+   children,
+ }: Readonly<{
+   children: React.ReactNode
+ }>) {
+   return (
+     <html lang="en" suppressHydrationWarning>
+       <body className={`font-sans antialiased`}>
+         <ThemeProvider
+           attribute="class"
+           defaultTheme="dark"
+           enableSystem
+           disableTransitionOnChange
+         >
+           {children}
+         </ThemeProvider>
+         <Analytics />
+       </body>
+     </html>
+   )
+ }
