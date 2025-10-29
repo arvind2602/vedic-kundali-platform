@@ -1,40 +1,37 @@
-import type { Metadata } from 'next'
+import type React from "react"
+import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/next"
+import "./globals.css"
 
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
-import { Geist, Geist_Mono, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
+import { Playfair_Display, Open_Sans, Noto_Sans_Devanagari, Geist as V0_Font_Geist, Geist_Mono as V0_Font_Geist_Mono, Source_Serif_4 as V0_Font_Source_Serif_4 } from 'next/font/google'
 
 // Initialize fonts
 const _geist = V0_Font_Geist({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
 const _geistMono = V0_Font_Geist_Mono({ subsets: ['latin'], weight: ["100","200","300","400","500","600","700","800","900"] })
 const _sourceSerif_4 = V0_Font_Source_Serif_4({ subsets: ['latin'], weight: ["200","300","400","500","600","700","800","900"] })
 
+const playfairDisplay = Playfair_Display({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] })
+const openSans = Open_Sans({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] })
+const notoSansDevanagari = Noto_Sans_Devanagari({ subsets: ["devanagari"], weight: ["400", "500", "600", "700"] })
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: "Vedic Kundali Platform - Birth Chart & Astrology",
+  description:
+    "Discover your cosmic blueprint through authentic Vedic astrology. Generate your birth chart, get personalized insights, and explore your destiny.",
+  generator: "v0.app",
 }
 
-import { ThemeProvider } from "@/components/theme-provider"
- 
- export default function RootLayout({
-   children,
- }: Readonly<{
-   children: React.ReactNode
- }>) {
-   return (
-     <html lang="en" suppressHydrationWarning>
-       <body className={`font-sans antialiased`}>
-         <ThemeProvider
-           attribute="class"
-           defaultTheme="dark"
-           enableSystem
-           disableTransitionOnChange
-         >
-           {children}
-         </ThemeProvider>
-         <Analytics />
-       </body>
-     </html>
-   )
- }
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${openSans.className} antialiased`}>
+        {children}
+        <Analytics />
+      </body>
+    </html>
+  )
+}

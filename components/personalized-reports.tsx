@@ -2,6 +2,7 @@
 
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { AlertCircle, Heart, Briefcase, Activity } from "lucide-react"
 
 type PersonalizedReportsProps = {
   data: any
@@ -87,67 +88,87 @@ export function PersonalizedReports({ data }: PersonalizedReportsProps) {
   return (
     <div className="space-y-6">
       <Tabs defaultValue="personality" className="w-full">
-        <TabsList className="grid w-full grid-cols-4 bg-slate-700">
-          <TabsTrigger value="personality" className="text-white">
+        <TabsList className="grid w-full grid-cols-4 bg-cream border-2 border-saffron">
+          <TabsTrigger
+            value="personality"
+            className="text-dark-gray data-[state=active]:bg-saffron data-[state=active]:text-white"
+          >
             Personality
           </TabsTrigger>
-          <TabsTrigger value="career" className="text-white">
+          <TabsTrigger
+            value="career"
+            className="text-dark-gray data-[state=active]:bg-saffron data-[state=active]:text-white"
+          >
             Career
           </TabsTrigger>
-          <TabsTrigger value="health" className="text-white">
+          <TabsTrigger
+            value="health"
+            className="text-dark-gray data-[state=active]:bg-saffron data-[state=active]:text-white"
+          >
             Health
           </TabsTrigger>
-          <TabsTrigger value="relationship" className="text-white">
+          <TabsTrigger
+            value="relationship"
+            className="text-dark-gray data-[state=active]:bg-saffron data-[state=active]:text-white"
+          >
             Relationships
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="personality">
-          <Card className="bg-slate-800 border-purple-500 p-8">
-            <h3 className="text-xl font-bold text-white mb-4">Personality Profile</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-slate-400 text-sm mb-2">Sun Sign: {data.sunSign}</p>
-                <p className="text-white">{generatePersonalityReport()}</p>
+          <Card className="vedic-card p-8 bg-white">
+            <h3 className="text-2xl font-serif font-bold text-saffron mb-6">Personality Profile</h3>
+            <div className="space-y-6">
+              <div className="bg-cream p-6 rounded-lg border-l-4 border-gold">
+                <p className="text-dark-gray text-sm font-semibold mb-2">Sun Sign: {data.sunSign}</p>
+                <p className="text-dark-gray">{generatePersonalityReport()}</p>
               </div>
-              <div>
-                <p className="text-slate-400 text-sm mb-2">Moon Sign: {data.moonSign}</p>
-                <p className="text-white">Emotional nature and inner self</p>
+              <div className="bg-cream p-6 rounded-lg border-l-4 border-gold">
+                <p className="text-dark-gray text-sm font-semibold mb-2">Moon Sign: {data.moonSign}</p>
+                <p className="text-dark-gray">Emotional nature and inner self</p>
               </div>
-              <div>
-                <p className="text-slate-400 text-sm mb-2">Ascendant: {data.ascendant}</p>
-                <p className="text-white">How you appear to the world</p>
+              <div className="bg-cream p-6 rounded-lg border-l-4 border-gold">
+                <p className="text-dark-gray text-sm font-semibold mb-2">Ascendant: {data.ascendant}</p>
+                <p className="text-dark-gray">How you appear to the world</p>
               </div>
             </div>
           </Card>
         </TabsContent>
 
         <TabsContent value="career">
-          <Card className="bg-slate-800 border-purple-500 p-8">
-            <h3 className="text-xl font-bold text-white mb-4">Career Guidance</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-slate-400 text-sm mb-2">Suitable Careers:</p>
-                <p className="text-white">{generateCareerReport()}</p>
+          <Card className="vedic-card p-8 bg-white">
+            <div className="flex items-start gap-3 mb-6">
+              <Briefcase className="w-8 h-8 text-saffron flex-shrink-0 mt-1" />
+              <h3 className="text-2xl font-serif font-bold text-saffron">Career Guidance</h3>
+            </div>
+            <div className="space-y-6">
+              <div className="bg-cream p-6 rounded-lg border-l-4 border-gold">
+                <p className="text-dark-gray text-sm font-semibold mb-2">Suitable Careers:</p>
+                <p className="text-dark-gray">{generateCareerReport()}</p>
               </div>
-              <div>
-                <p className="text-slate-400 text-sm mb-2">Current Dasha: {data.dashaSystem.currentDasha}</p>
-                <p className="text-white text-sm">This period influences your career opportunities and growth</p>
+              <div className="bg-cream p-6 rounded-lg border-l-4 border-gold">
+                <p className="text-dark-gray text-sm font-semibold mb-2">
+                  Current Dasha: {data.dashaSystem.currentDasha}
+                </p>
+                <p className="text-dark-gray text-sm">This period influences your career opportunities and growth</p>
               </div>
             </div>
           </Card>
         </TabsContent>
 
         <TabsContent value="health">
-          <Card className="bg-slate-800 border-purple-500 p-8">
-            <h3 className="text-xl font-bold text-white mb-4">Health Insights</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-slate-400 text-sm mb-2">Areas to Monitor:</p>
-                <p className="text-white">{generateHealthReport()}</p>
+          <Card className="vedic-card p-8 bg-white">
+            <div className="flex items-start gap-3 mb-6">
+              <Activity className="w-8 h-8 text-saffron flex-shrink-0 mt-1" />
+              <h3 className="text-2xl font-serif font-bold text-saffron">Health Insights</h3>
+            </div>
+            <div className="space-y-6">
+              <div className="bg-cream p-6 rounded-lg border-l-4 border-gold">
+                <p className="text-dark-gray text-sm font-semibold mb-2">Areas to Monitor:</p>
+                <p className="text-dark-gray">{generateHealthReport()}</p>
               </div>
-              <div className="bg-slate-700 p-4 rounded-lg mt-4">
-                <p className="text-yellow-400 text-sm">
+              <div className="bg-saffron/10 border-2 border-saffron p-4 rounded-lg">
+                <p className="text-saffron text-sm font-semibold">
                   Recommendation: Maintain a balanced lifestyle and regular health checkups
                 </p>
               </div>
@@ -156,15 +177,19 @@ export function PersonalizedReports({ data }: PersonalizedReportsProps) {
         </TabsContent>
 
         <TabsContent value="relationship">
-          <Card className="bg-slate-800 border-purple-500 p-8">
-            <h3 className="text-xl font-bold text-white mb-4">Relationship Compatibility</h3>
-            <div className="space-y-4">
-              <div>
-                <p className="text-slate-400 text-sm mb-2">Most Compatible Signs:</p>
-                <p className="text-white">{generateRelationshipReport()}</p>
+          <Card className="vedic-card p-8 bg-white">
+            <div className="flex items-start gap-3 mb-6">
+              <Heart className="w-8 h-8 text-saffron flex-shrink-0 mt-1" />
+              <h3 className="text-2xl font-serif font-bold text-saffron">Relationship Compatibility</h3>
+            </div>
+            <div className="space-y-6">
+              <div className="bg-cream p-6 rounded-lg border-l-4 border-gold">
+                <p className="text-dark-gray text-sm font-semibold mb-2">Most Compatible Signs:</p>
+                <p className="text-dark-gray">{generateRelationshipReport()}</p>
               </div>
-              <div className="bg-slate-700 p-4 rounded-lg mt-4">
-                <p className="text-purple-300 text-sm">
+              <div className="bg-saffron/10 border-2 border-saffron p-4 rounded-lg flex items-start gap-2">
+                <AlertCircle className="w-5 h-5 text-saffron flex-shrink-0 mt-0.5" />
+                <p className="text-saffron text-sm">
                   Note: Compatibility depends on complete birth chart analysis, not just sun signs
                 </p>
               </div>
@@ -174,24 +199,30 @@ export function PersonalizedReports({ data }: PersonalizedReportsProps) {
       </Tabs>
 
       {/* Doshas Section */}
-      <Card className="bg-slate-800 border-purple-500 p-8">
-        <h3 className="text-xl font-bold text-white mb-4">Doshas Analysis</h3>
+      <Card className="vedic-card p-8 bg-white">
+        <h3 className="text-2xl font-serif font-bold text-saffron mb-6">Doshas Analysis</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className={`p-4 rounded-lg ${data.doshas.mangal ? "bg-red-900" : "bg-green-900"}`}>
-            <p className="text-white font-semibold">Mangal Dosha</p>
-            <p className={data.doshas.mangal ? "text-red-200" : "text-green-200"}>
+          <div
+            className={`p-6 rounded-lg border-2 ${data.doshas.mangal ? "bg-red-50 border-maroon" : "bg-green-50 border-green-500"}`}
+          >
+            <p className="font-serif font-bold text-dark-gray">Mangal Dosha</p>
+            <p className={`mt-2 font-semibold ${data.doshas.mangal ? "text-maroon" : "text-green-700"}`}>
               {data.doshas.mangal ? "Present" : "Not Present"}
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${data.doshas.pitra ? "bg-red-900" : "bg-green-900"}`}>
-            <p className="text-white font-semibold">Pitra Dosha</p>
-            <p className={data.doshas.pitra ? "text-red-200" : "text-green-200"}>
+          <div
+            className={`p-6 rounded-lg border-2 ${data.doshas.pitra ? "bg-red-50 border-maroon" : "bg-green-50 border-green-500"}`}
+          >
+            <p className="font-serif font-bold text-dark-gray">Pitra Dosha</p>
+            <p className={`mt-2 font-semibold ${data.doshas.pitra ? "text-maroon" : "text-green-700"}`}>
               {data.doshas.pitra ? "Present" : "Not Present"}
             </p>
           </div>
-          <div className={`p-4 rounded-lg ${data.doshas.nadi ? "bg-red-900" : "bg-green-900"}`}>
-            <p className="text-white font-semibold">Nadi Dosha</p>
-            <p className={data.doshas.nadi ? "text-red-200" : "text-green-200"}>
+          <div
+            className={`p-6 rounded-lg border-2 ${data.doshas.nadi ? "bg-red-50 border-maroon" : "bg-green-50 border-green-500"}`}
+          >
+            <p className="font-serif font-bold text-dark-gray">Nadi Dosha</p>
+            <p className={`mt-2 font-semibold ${data.doshas.nadi ? "text-maroon" : "text-green-700"}`}>
               {data.doshas.nadi ? "Present" : "Not Present"}
             </p>
           </div>
@@ -199,13 +230,13 @@ export function PersonalizedReports({ data }: PersonalizedReportsProps) {
       </Card>
 
       {/* Yogas Section */}
-      <Card className="bg-slate-800 border-purple-500 p-8">
-        <h3 className="text-xl font-bold text-white mb-4">Auspicious Yogas</h3>
+      <Card className="vedic-card p-8 bg-white">
+        <h3 className="text-2xl font-serif font-bold text-saffron mb-6">Auspicious Yogas</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.yogas.map((yoga: string, index: number) => (
-            <div key={index} className="bg-slate-700 p-4 rounded-lg border border-purple-500">
-              <p className="text-purple-300 font-semibold">{yoga}</p>
-              <p className="text-slate-400 text-sm mt-2">Brings positive influences to your life</p>
+            <div key={index} className="bg-cream p-4 rounded-lg border-2 border-gold">
+              <p className="text-saffron font-serif font-bold">{yoga}</p>
+              <p className="text-dark-gray text-sm mt-2">Brings positive influences to your life</p>
             </div>
           ))}
         </div>

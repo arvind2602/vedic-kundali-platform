@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { calculateKundali } from "@/lib/kundali-calculator"
+import { Sparkles } from "lucide-react"
 
 type BirthDetailsFormProps = {
   onKundaliGenerated: (data: any) => void
@@ -85,125 +86,128 @@ export function BirthDetailsForm({ onKundaliGenerated }: BirthDetailsFormProps) 
   }
 
   return (
-    <Card className="bg-slate-800 border-purple-500 p-8">
-      <h2 className="text-2xl font-bold text-white mb-6">Enter Your Birth Details</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Name */}
-          <div>
-            <Label htmlFor="name" className="text-white">
-              Name *
-            </Label>
-            <Input
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name"
-              className="bg-slate-700 border-slate-600 text-white placeholder-slate-400"
-              required
-            />
-          </div>
-
-          {/* Gender */}
-          <div>
-            <Label htmlFor="gender" className="text-white">
-              Gender
-            </Label>
-            <select
-              id="gender"
-              name="gender"
-              value={formData.gender}
-              onChange={handleChange}
-              className="w-full px-3 py-2 bg-slate-700 border border-slate-600 text-white rounded-md"
-            >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          {/* Birth Date */}
-          <div>
-            <Label htmlFor="birthDate" className="text-white">
-              Birth Date *
-            </Label>
-            <Input
-              id="birthDate"
-              name="birthDate"
-              type="date"
-              value={formData.birthDate}
-              onChange={handleChange}
-              className="bg-slate-700 border-slate-600 text-white"
-              required
-            />
-          </div>
-
-          {/* Birth Time */}
-          <div>
-            <Label htmlFor="birthTime" className="text-white">
-              Birth Time (HH:MM) *
-            </Label>
-            <Input
-              id="birthTime"
-              name="birthTime"
-              type="time"
-              value={formData.birthTime}
-              onChange={handleChange}
-              className="bg-slate-700 border-slate-600 text-white"
-              required
-            />
-          </div>
-
-          {/* Birth Location */}
-          <div className="md:col-span-2">
-            <Label htmlFor="birthLocation" className="text-white">
-              Birth Location (City) *
-            </Label>
-            <Input
-              id="birthLocation"
-              name="birthLocation"
-              value={formData.birthLocation}
-              onChange={handleChange}
-              placeholder="e.g., Delhi, Mumbai, Bangalore"
-              className="bg-slate-700 border-slate-600 text-white placeholder-slate-400"
-              required
-            />
-            <p className="text-xs text-slate-400 mt-2">
-              Supported cities: Delhi, Mumbai, Bangalore, Kolkata, Hyderabad, Chennai, Pune, Jaipur
-            </p>
-          </div>
-
-          {/* Timezone */}
-          <div className="md:col-span-2">
-            <Label htmlFor="timezone" className="text-white">
-              Timezone
-            </Label>
-            <select
-              id="timezone"
-              name="timezone"
-              value={formData.timezone}
-              onChange={handleChange}
-              className="w-full px-3 py-2 bg-slate-700 border border-slate-600 text-white rounded-md"
-            >
-              <option value="UTC">UTC</option>
-              <option value="IST">IST (Indian Standard Time)</option>
-              <option value="EST">EST (Eastern Standard Time)</option>
-              <option value="PST">PST (Pacific Standard Time)</option>
-            </select>
-          </div>
+    <div className="space-y-6">
+      <Card className="vedic-card p-8 bg-white">
+        <div className="flex items-center gap-3 mb-6">
+          <Sparkles className="w-8 h-8 text-saffron" />
+          <h2 className="text-3xl font-serif font-bold text-saffron">Enter Your Birth Details</h2>
         </div>
+        <p className="text-dark-gray mb-6">Provide your birth information to generate your personalized Kundali</p>
 
-        {error && <div className="bg-red-900 border border-red-700 text-red-100 px-4 py-3 rounded">{error}</div>}
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Name */}
+            <div>
+              <Label htmlFor="name" className="text-dark-gray font-semibold">
+                Name *
+              </Label>
+              <Input
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your name"
+                className="bg-light-gray border-2 border-cream text-dark-gray placeholder-gray-400 focus:border-saffron"
+                required
+              />
+            </div>
 
-        <Button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2"
-        >
-          {loading ? "Generating Kundali..." : "Generate Kundali"}
-        </Button>
-      </form>
-    </Card>
+            {/* Gender */}
+            <div>
+              <Label htmlFor="gender" className="text-dark-gray font-semibold">
+                Gender
+              </Label>
+              <select
+                id="gender"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                className="w-full px-3 py-2 bg-light-gray border-2 border-cream text-dark-gray rounded-md focus:border-saffron focus:outline-none"
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            {/* Birth Date */}
+            <div>
+              <Label htmlFor="birthDate" className="text-dark-gray font-semibold">
+                Birth Date *
+              </Label>
+              <Input
+                id="birthDate"
+                name="birthDate"
+                type="date"
+                value={formData.birthDate}
+                onChange={handleChange}
+                className="bg-light-gray border-2 border-cream text-dark-gray focus:border-saffron"
+                required
+              />
+            </div>
+
+            {/* Birth Time */}
+            <div>
+              <Label htmlFor="birthTime" className="text-dark-gray font-semibold">
+                Birth Time (HH:MM) *
+              </Label>
+              <Input
+                id="birthTime"
+                name="birthTime"
+                type="time"
+                value={formData.birthTime}
+                onChange={handleChange}
+                className="bg-light-gray border-2 border-cream text-dark-gray focus:border-saffron"
+                required
+              />
+            </div>
+
+            {/* Birth Location */}
+            <div className="md:col-span-2">
+              <Label htmlFor="birthLocation" className="text-dark-gray font-semibold">
+                Birth Location (City) *
+              </Label>
+              <Input
+                id="birthLocation"
+                name="birthLocation"
+                value={formData.birthLocation}
+                onChange={handleChange}
+                placeholder="e.g., Delhi, Mumbai, Bangalore"
+                className="bg-light-gray border-2 border-cream text-dark-gray placeholder-gray-400 focus:border-saffron"
+                required
+              />
+              <p className="text-xs text-dark-gray mt-2">
+                Supported cities: Delhi, Mumbai, Bangalore, Kolkata, Hyderabad, Chennai, Pune, Jaipur
+              </p>
+            </div>
+
+            {/* Timezone */}
+            <div className="md:col-span-2">
+              <Label htmlFor="timezone" className="text-dark-gray font-semibold">
+                Timezone
+              </Label>
+              <select
+                id="timezone"
+                name="timezone"
+                value={formData.timezone}
+                onChange={handleChange}
+                className="w-full px-3 py-2 bg-light-gray border-2 border-cream text-dark-gray rounded-md focus:border-saffron focus:outline-none"
+              >
+                <option value="UTC">UTC</option>
+                <option value="IST">IST (Indian Standard Time)</option>
+                <option value="EST">EST (Eastern Standard Time)</option>
+                <option value="PST">PST (Pacific Standard Time)</option>
+              </select>
+            </div>
+          </div>
+
+          {error && <div className="bg-red-50 border-2 border-maroon text-maroon px-4 py-3 rounded-lg">{error}</div>}
+
+          <Button type="submit" disabled={loading} className="w-full vedic-button py-3 text-lg font-semibold">
+            {loading ? "Generating Kundali..." : "Generate Kundali"}
+          </Button>
+        </form>
+      </Card>
+    </div>
   )
 }
